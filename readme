@@ -1,0 +1,101 @@
+#### Avant toute chose bienvenue dans le projet du groupe constitué de Delenn Decambron - Maxime Bloise - Ryan Carlet et Zyad Zain El Abidine ####
+
+
+# Gestionnaire de Fichiers avec Authentification
+
+Ce projet est une application PHP qui combine un système d'authentification avec un gestionnaire de fichiers permettant le partage entre utilisateurs.
+
+## Fonctionnalités
+
+### Authentification
+- Inscription avec email et mot de passe
+- Connexion sécurisée
+- Modification du profil (email, mot de passe)
+- Déconnexion
+
+### Gestion de fichiers
+- Upload de fichiers (limité à 200Mo)
+- Téléchargement de fichiers
+- Suppression de fichiers
+- Affichage des statistiques (taille, date, nombre de téléchargements)
+
+### Gestion des droits d'accès
+- Partage de fichiers avec d'autres utilisateurs
+- Visualisation des fichiers partagés
+- Révocation des accès
+
+## Structure des fichiers
+
+- `functions.php` : Contient toutes les fonctions du système
+- `connexion.php` : Page de connexion
+- `inscription.php` : Page d'inscription
+- `dashboard.php` : Page principale après connexion
+- `upload.php` : Traitement des uploads de fichiers
+- `download.php` : Téléchargement des fichiers
+- `delete.php` : Suppression des fichiers
+- `permissions.php` : Gestion des permissions d'accès
+- `update_email.php` : Modification de l'email
+- `update_password.php` : Modification du mot de passe
+
+## Installation (pense-bête)
+
+1. Placez tous les fichiers dans un dossier accessible par votre serveur web
+2. Assurez-vous que PHP est configuré correctement sur votre serveur
+3. Vérifiez que les permissions d'écriture sont correctes pour les dossiers `data` et `uploads` (ils seront créés automatiquement)
+4. Accédez à `inscription.php` pour créer votre premier compte
+
+## Structure des données
+
+Les données sont stockées dans trois fichiers JSON :
+
+### users.json
+Stocke les informations d'authentification des utilisateurs :
+```json
+{
+  "utilisateur@exemple.com": "$2y$10$..."
+}
+```
+
+### files.json
+Stocke les métadonnées des fichiers :
+```json
+{
+  "file_id": {
+    "id": "file_id",
+    "original_name": "nom_du_fichier.ext",
+    "hash_dir": "dossier_hash",
+    "size": 12345,
+    "upload_date": "2023-05-10 14:30:00",
+    "download_count": 5,
+    "user_email": "utilisateur@exemple.com"
+  }
+}
+```
+
+### permissions.json
+Stocke les permissions d'accès entre utilisateurs :
+```json
+{
+  "proprietaire@exemple.com": {
+    "granted_users": [
+      "utilisateur1@exemple.com",
+      "utilisateur2@exemple.com"
+    ]
+  }
+}
+```
+
+## Sécurité
+
+- Les mots de passe sont hashés avec password_hash() (bcrypt)
+- Les fichiers PHP ne peuvent pas être uploadés
+- Vérification des permissions avant chaque action
+- Nettoyage des entrées utilisateur
+- Vérification de l'authentification sur chaque page
+
+## Points d'amélioration futurs (un autre pense-bête)
+
+- Ajouter un système de catégories pour les fichiers
+- Ajouter une prévisualisation des fichiers
+- Implémenter une date d'expiration pour les fichiers
+- Ajouter une fonction de recherche de fichiers
