@@ -15,6 +15,7 @@ Ce projet est une application PHP qui combine un système d'authentification ave
 
 ### Gestion de fichiers
 - Upload de fichiers (limité à 200Mo)
+- Enregistrement des fichiers dans un dossier "uploads", qui est crée automatiquement si dernier n'existe pas
 - Téléchargement de fichiers
 - Suppression de fichiers
 - Affichage des statistiques (taille, date, nombre de téléchargements)
