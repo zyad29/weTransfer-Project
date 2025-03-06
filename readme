@@ -3,7 +3,7 @@
 
 # Gestionnaire de Fichiers avec Authentification
 
-Ce projet est une application PHP qui combine un système d'authentification avec un gestionnaire de fichiers permettant le partage entre utilisateurs.
+Ce projet est une application PHP qui combine un système d'authentification avec un gestionnaire de fichiers permettant le partage de fichiers entre utilisateurs.
 
 ## Fonctionnalités
 
